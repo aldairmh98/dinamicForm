@@ -5,39 +5,42 @@
  */
 package com.mycompany.anaproject;
 
-import com.mongodb.Block;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import java.util.ArrayList;
+import javax.swing.text.AbstractDocument;
 import org.bson.Document;
 
 /**
  *
  * @author aldai
  */
-public class DAOData {
-
+public class DAOForm {
     private MongoCollection mongoCollection = null;
-    private static DAOData dao = null;
+    private static DAOForm dao = null;
 
-    private DAOData() {
-        mongoCollection = MongoConnection.getMongoConnection().getDatabase().getCollection("data2");
+    private DAOForm() {
+        mongoCollection = MongoConnection.getMongoConnection().getDatabase().getCollection("forms");
     }
 
-    public static DAOData getDaoData() {
+    public static DAOForm getDaoForm() {
         if (dao == null) {
-            dao = new DAOData();
+            dao = new DAOForm();
         }
         return dao;
     }
-
-    public void insert(Document document) {
-        
-        mongoCollection.insertOne(document);
+    
+    public void agregar(ArrayList<Field> fields)
+    {
+        System.out.println("Executing");
+        Document docto = new Document();
+        for (Field f : fields) {
+            docto.append(f.gettField().getText(), f.getCombo().getSelectedItem().toString());
+        }
+        mongoCollection.insertOne(docto);
     }
 
-    public ArrayList<Document> getData() {
+    public ArrayList<Document> getForms(){
         MongoCursor<Document> cursor = mongoCollection.find().iterator();
         ArrayList<Document> documents = new ArrayList<>();
 

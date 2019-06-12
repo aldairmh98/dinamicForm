@@ -20,7 +20,7 @@ public class MongoConnection {
 
     private MongoConnection() {
         mcli = new MongoClient();
-        mbd = mcli.getDatabase("ana2");
+        mbd = mcli.getDatabase("ana3");
     }
 
     public static MongoConnection getMongoConnection() {

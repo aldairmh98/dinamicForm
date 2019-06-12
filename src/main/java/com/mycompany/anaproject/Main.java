@@ -5,6 +5,8 @@
  */
 package com.mycompany.anaproject;
 
+import com.mycompany.anaproject.views.FormLogin;
+import com.mycompany.anaproject.views.MainWindow;
 import com.mycompany.anaproject.views.NewJFrame;
 import java.util.Scanner;
 import org.bson.Document;
@@ -20,16 +22,13 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Document doc = new Document();
-        Scanner sc = new Scanner(System.in);
-        String message = "Ingrese tipo de dato \n\t1.-: Entero \n\t2.-: Cadena \n\t1.-: Boleano \n\t0.-: Fin o agregar";
-        System.out.println(message);
-        int dataType = 0, value = 0;
-        String fieldName = "", val = "";
         //DAOData.getDaoData().getData();
         
-        NewJFrame njf = new NewJFrame();
-        njf.setVisible(true);
+//        NewJFrame njf = new NewJFrame();
+//        njf.setVisible(true);
+        
+        FormLogin fc = new FormLogin();
+        fc.setVisible(true);
 
 //        while ((dataType = sc.nextInt()) != 0) {
 //            switch (dataType) {
